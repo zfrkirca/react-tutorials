@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import NewsItem from "./NewsItem";
 
 class News extends Component {
+
+    constructor(props) {
+        super(); // required
+
+        console.log(props);
+    }
+
     static propTypes = {
         news: PropTypes.arrayOf(
             PropTypes.shape({

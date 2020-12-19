@@ -3,8 +3,6 @@ import '../css/NewsItem.css';
 
 class NewsItem extends Component {
     render() {
-        console.log(this.props);
-
         const {title, description} = this.props;
 
         return (
