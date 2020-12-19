@@ -3,10 +3,14 @@ import '../css/NewsItem.css';
 
 class NewsItem extends Component {
     render() {
+        console.log(this.props);
+
+        const {title, description} = this.props;
+
         return (
             <div>
-                <h1 className="title">Hello React!</h1>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                <h1 className="title">Hello {title}</h1>
+                <p>{description}</p>
             </div>
         )
     }
