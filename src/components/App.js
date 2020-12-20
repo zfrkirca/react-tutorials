@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import '../css/App.css';
 
-const homepage = () => {
+const Homepage = () => {
     return (<h1>Homepage</h1>);
 }
 
-const contact = () => {
+const Contact = () => {
     return (<h1>Contact page</h1>);
 }
 
-const news = () => {
-    return (<h1>News page</h1>);
+const News = (route) => {
+    return (<h1>News page: {route.match.params.id}</h1>);
 }
 
 class App extends Component {
@@ -20,11 +20,11 @@ class App extends Component {
             <Router>
                 <div>
                     {/*exact and strict keywords for full match. search on google*/}
-                    <Route path="/" exact strict component={homepage}></Route>
+                    <Route path="/" exact strict component={Homepage}></Route>
 
-                    <Route path="/contact" exact strict component={contact}></Route>
+                    <Route path="/contact" exact strict component={Contact}></Route>
 
-                    <Route path="/newst" exact strict component={news}></Route>
+                    <Route path="/news/:id" exact strict component={News}></Route>
                 </div>
             </Router>
         );
