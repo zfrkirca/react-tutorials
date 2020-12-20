@@ -6,14 +6,14 @@ class NewsForm extends Component {
         super(props);
     }
 
-    addButton = () => {
+    addButton() {
         this.props.addNews();
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.addButton}>Add</button>
+                <button onClick={() => this.addButton()}>Add</button>
             </div>
         )
     }
