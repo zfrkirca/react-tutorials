@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import '../css/App.css';
 
 const Homepage = () => {
@@ -19,6 +19,10 @@ class App extends Component {
         return (
             <Router>
                 <div>
+                    <Link to="/homepage">Homepage</Link><br/>
+                    <Link to="/contact">Contact</Link><br/>
+                    <Link to="/news/2">News</Link>
+
                     {/*exact and strict keywords for full match. search on google*/}
                     <Route path="/" exact strict component={Homepage}></Route>
 
