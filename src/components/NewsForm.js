@@ -4,11 +4,9 @@ class NewsForm extends Component {
 
     constructor(props) {
         super(props);
-
-        this.addButton = this.addButton.bind(this);
     }
 
-    addButton() {
+    addButton = () => {
         this.props.addNews();
     }
 
