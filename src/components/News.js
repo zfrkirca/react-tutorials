@@ -7,8 +7,6 @@ class News extends Component {
 
     constructor(props) {
         super(); // required
-
-        console.log(props);
     }
 
     static propTypes = {
