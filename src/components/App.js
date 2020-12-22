@@ -1,22 +1,10 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
 import '../css/App.css';
-
-const Homepage = () => {
-    return (<h1>Homepage</h1>);
-}
-
-const Contact = () => {
-    return (<h1>Contact page</h1>);
-}
-
-const News = (route) => {
-    return (<h1>News page: {route.match.params.id}</h1>);
-}
-
-const Profile = () => {
-    return (<h1>Profile page</h1>);
-}
+import Homepage from "./Homepage";
+import Contact from "./Contact";
+import News from "./News";
+import Profile from "./Profile";
 
 class App extends Component {
     state = {
