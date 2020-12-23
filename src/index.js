@@ -4,34 +4,56 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
 
 // reducer ilgili datayı günceller ve yenisini döner
-function reducer(state, action) {
-    if (action.type === 'changeTheState') {
-        return action.payload.newState;
+function userReducer(state = '', action) {
+    switch (action.type) {
+        case 'userUpdate':
+            return action.payload;
+        default:
+            return state;
     }
-
-    return 'deneme state';
+    return state;
 }
 
+function productReducer(state = [], action) {
+    return state;
+}
+
+// birden fazla reducer'ı birleştirmek için kullanılır
+const rootReducer = combineReducers({
+    products: productReducer,
+    user: userReducer
+})
+
 // createStore içine reducer vermek gerekiyor
-const store = createStore(reducer);
+// İkinci parametrede default değer verilebilir
+const store = createStore(rootReducer, {
+        products: [{
+            name: 'Samsung',
+            type: 'TV'
+        }],
+        user: 'Zafer'
+    },
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 console.log(store.getState());
 
-const action = {
-    type: 'changeTheState',
+const updateUserAction = {
+    type: 'userUpdate',
     payload: {
-        newState: 'my new state'
+        user: 'Ahmet'
     }
 }
 
+/*
 store.subscribe(() => {
     console.log('store updated: ', store.getState());
-})
+});*/
 
-store.dispatch(action);
+store.dispatch(updateUserAction);
 
 ReactDOM.render(
     <React.StrictMode>
