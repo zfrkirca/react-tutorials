@@ -5,21 +5,9 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 import {combineReducers, createStore} from "redux";
-
-// reducer ilgili datayı günceller ve yenisini döner
-function userReducer(state = '', action) {
-    switch (action.type) {
-        case 'userUpdate':
-            return action.payload;
-        default:
-            return state;
-    }
-    return state;
-}
-
-function productReducer(state = [], action) {
-    return state;
-}
+import {Provider} from "react-redux";
+import productReducer from "./reducers/productReducer";
+import userReducer from "./reducers/userReducer";
 
 // birden fazla reducer'ı birleştirmek için kullanılır
 const rootReducer = combineReducers({
@@ -39,7 +27,6 @@ const store = createStore(rootReducer, {
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-console.log(store.getState());
 
 const updateUserAction = {
     type: 'userUpdate',
@@ -55,9 +42,12 @@ store.subscribe(() => {
 
 store.dispatch(updateUserAction);
 
+// redux'ın store'u kullanabilmesi için provider ile sarmalanması gerekiyor
 ReactDOM.render(
     <React.StrictMode>
-        <App/>
+        <Provider store={store}>
+            <App/>
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 );
