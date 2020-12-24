@@ -1,8 +1,10 @@
+import {UPDATE_USER} from "../actions/userActions";
+
 // reducer ilgili datayı günceller ve yenisini döner
 function userReducer(state = '', action) {
     switch (action.type) {
-        case 'userUpdate':
-            return action.payload;
+        case UPDATE_USER:
+            return action.payload.user;
         default:
             return state;
     }

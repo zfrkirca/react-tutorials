@@ -27,21 +27,6 @@ const store = createStore(rootReducer, {
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-
-const updateUserAction = {
-    type: 'userUpdate',
-    payload: {
-        user: 'Ahmet'
-    }
-}
-
-/*
-store.subscribe(() => {
-    console.log('store updated: ', store.getState());
-});*/
-
-store.dispatch(updateUserAction);
-
 // redux'ın store'u kullanabilmesi için provider ile sarmalanması gerekiyor
 ReactDOM.render(
     <React.StrictMode>
